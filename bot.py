@@ -1,6 +1,7 @@
 import discord 
 from dotenv import load_dotenv 
 import os
+from math import *
 
 # create intents
 intents = discord.Intents.default()
@@ -21,9 +22,12 @@ async def on_ready():
 async def on_message(message):
     if message.author.bot:
         return
-    if message.content.startswith("ᓚᘏᗢ"): 
+    if message.content.startswith("ᓚᘏᗢ"):
         cleanMsg = message.content[3:]
-        await message.channel.send("hi...unfortunately :( *echo of" + cleanMsg + "*")
+        await message.channel.send("hi...unfortunately :( *echo of" + (cleanMsg) + "*")
+    if message.content.startswith("math:("): 
+        cleanMsg = message.content[6:]
+        await message.channel.send("hi...unfortunately :( *math is sad but here u go :( ' " + str(eval(cleanMsg)) + " ' *")
 
 # log in
 client.run(token)
